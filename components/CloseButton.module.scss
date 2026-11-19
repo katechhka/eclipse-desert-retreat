@@ -1,0 +1,27 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  gap: 16px;
+  min-height: 48px;
+  padding: 12px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.25s;
+  svg {
+    display: block;
+    flex: 0 0 20px;
+  }
+  &:hover {
+    color: var(--color-rust);
+  }
+  &:active {
+    transform: translateY(1px);
+  }
+}

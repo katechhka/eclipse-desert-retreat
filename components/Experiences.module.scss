@@ -1,0 +1,316 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: url("#{$base-path}/images/architecture-sand-v2.webp") center top / 100% auto
+      repeat-y;
+    opacity: 0.6;
+    mask-image: linear-gradient(transparent, black 9%, black 92%, transparent);
+  }
+  background: var(--color-stone);
+  color: var(--color-ivory);
+  padding: clamp(96px, 10vw, 160px) var(--page-gutter) clamp(100px, 12vw, 190px);
+  scroll-margin-top: var(--header-height);
+}
+.inner {
+  max-width: 1440px;
+  margin-inline: auto;
+}
+.intro {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 10%;
+  align-items: end;
+  margin-bottom: clamp(64px, 8vw, 128px);
+  h2 {
+    margin: 0;
+    font:
+      400 var(--text-experiences)/0.92 var(--font-display),
+      Georgia,
+      serif;
+    letter-spacing: -0.035em;
+    span {
+      display: block;
+      margin-left: 16%;
+      font-style: italic;
+    }
+  }
+  p {
+    max-width: 365px;
+    margin: 0 0 5px;
+    font-size: var(--text-body-editorial);
+    line-height: 1.85;
+  }
+}
+.gallery {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  column-gap: clamp(40px, 9vw, 144px);
+  row-gap: clamp(70px, 8vw, 128px);
+  align-items: start;
+}
+.card {
+  min-width: 0;
+  position: relative;
+  &:nth-child(even) {
+    margin-top: 30%;
+  }
+  &:nth-child(3) {
+    margin-right: 12%;
+  }
+  &:nth-child(4) {
+    margin-left: -14%;
+  }
+}
+.photo {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.2, 0.65, 0.3, 1);
+  }
+}
+.caption {
+  padding-top: 24px;
+  h3 {
+    font:
+      400 clamp(36px, 3.6vw, 56px)/1.1 var(--font-display),
+      Georgia,
+      serif;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+  p {
+    font-size: 15px;
+    line-height: 1.8;
+    max-width: 380px;
+    margin: 0;
+  }
+  button {
+    display: inline-flex;
+    align-items: center;
+    gap: 32px;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    background: transparent;
+    color: inherit;
+    padding: 14px 0;
+    margin-top: 12px;
+    min-height: 48px;
+    transition:
+      color 0.25s,
+      gap 0.25s;
+    &:hover {
+      color: var(--color-sand);
+      gap: 42px;
+    }
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}
+.plus {
+  width: 14px;
+  height: 14px;
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background: currentColor;
+  }
+  &::before {
+    height: 1px;
+    width: 14px;
+    top: 6px;
+    left: 0;
+  }
+  &::after {
+    width: 1px;
+    height: 14px;
+    top: 0;
+    left: 6px;
+  }
+}
+.dialog {
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--color-stone) 25%, transparent);
+  background: var(--color-sand);
+  color: var(--color-stone);
+  width: min(1100px, calc(100% - 48px));
+  max-width: none;
+  max-height: 90svh;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  &::backdrop {
+    background: color-mix(in srgb, var(--color-night) 78%, transparent);
+  }
+}
+.detailLayout {
+  display: grid;
+  grid-template-columns: 0.85fr 1fr;
+  height: min(850px, calc(90svh - 2px));
+}
+.detailPhoto {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+.detailCopy {
+  overflow-y: auto;
+  min-height: 0;
+  overscroll-behavior: contain;
+  padding: 36px clamp(24px, 4vw, 64px) 56px;
+  > h2 {
+    font:
+      400 clamp(44px, 5vw, 68px)/1 var(--font-display),
+      Georgia,
+      serif;
+    margin: 28px 0;
+  }
+  > p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+}
+.close {
+  margin-left: auto;
+  display: flex;
+  width: fit-content;
+}
+.rituals {
+  h3 {
+    font:
+      400 36px/1.2 var(--font-display),
+      Georgia,
+      serif;
+    margin: 32px 0 24px;
+  }
+  dl {
+    margin: 0;
+  }
+  dl > div + div {
+    margin-top: 24px;
+  }
+  dt {
+    font-weight: 500;
+  }
+  dd {
+    margin: 8px 0 0;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}
+
+.overlay {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  .photo {
+    position: relative;
+  }
+  .overlay {
+    display: block;
+    position: absolute;
+    inset: auto 0 0;
+    margin: 0;
+    padding: 100px 28px 28px;
+    font-size: 15px;
+    line-height: 1.8;
+    background: linear-gradient(
+      transparent,
+      color-mix(in srgb, var(--color-night) 94%, transparent)
+    );
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 0.5s,
+      transform 0.5s;
+    pointer-events: none;
+  }
+  .card:hover,
+  .card:focus-within {
+    .photo img {
+      transform: scale(1.035);
+    }
+    .overlay {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+@media (max-width: 1023px) {
+  .gallery {
+    column-gap: 40px;
+  }
+  .intro {
+    gap: 40px;
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+@media (max-width: 767px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    h2 {
+      font-size: clamp(64px, 13vw, 90px);
+    }
+    p {
+      max-width: 450px;
+    }
+  }
+  .gallery {
+    grid-template-columns: 1fr;
+    gap: 64px;
+  }
+  .card:nth-child(n) {
+    margin: 0;
+    padding-bottom: 0;
+  }
+  .card:nth-child(even) {
+    margin-left: 8%;
+  }
+  .caption {
+    padding-top: 20px;
+  }
+  .dialog {
+    width: calc(100% - 24px);
+    max-height: 92svh;
+    overflow-y: auto;
+  }
+  .detailLayout {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  .detailPhoto {
+    display: none;
+  }
+  .detailCopy {
+    overflow: visible;
+    padding: 20px 24px 36px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section::before {
+    background-image: url("#{$base-path}/images/architecture-sand-small-v2.webp");
+    background-size: auto 1000px;
+    opacity: 0.45;
+  }
+}

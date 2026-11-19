@@ -1,0 +1,124 @@
+.section {
+  position: relative;
+  isolation: isolate;
+  min-height: 760px;
+  height: 100svh;
+  overflow: clip;
+  background: var(--color-night);
+  color: var(--color-ivory);
+  scroll-margin-top: var(--header-height);
+  display: grid;
+  align-items: start;
+  padding: clamp(140px, 19svh, 220px) var(--page-gutter) 80px;
+}
+.landscape {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 58% center;
+    display: block;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-night) 55%, transparent),
+      color-mix(in srgb, var(--color-night) 20%, transparent) 45%,
+      transparent 70%,
+      color-mix(in srgb, var(--color-night) 36%, transparent)
+    );
+  }
+}
+.copy {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  text-align: center;
+  h2 {
+    margin: 0;
+    font:
+      400 var(--text-stars)/0.95 var(--font-display),
+      Georgia,
+      serif;
+    letter-spacing: -0.035em;
+    span {
+      display: block;
+    }
+    span:last-child {
+      font-style: italic;
+    }
+  }
+  p {
+    max-width: 470px;
+    margin: 32px auto 0;
+    font-size: var(--text-body-editorial);
+    line-height: 1.8;
+    text-wrap: pretty;
+  }
+}
+.stars {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  i {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--color-ivory);
+    animation: shimmer 7s ease-in-out infinite alternate;
+    &:nth-child(1) {
+      left: 16%;
+      top: 16%;
+    }
+    &:nth-child(2) {
+      left: 72%;
+      top: 12%;
+      animation-delay: -3s;
+    }
+    &:nth-child(3) {
+      left: 40%;
+      top: 8%;
+      animation-delay: -5s;
+    }
+    &:nth-child(4) {
+      left: 86%;
+      top: 29%;
+      animation-delay: -2s;
+    }
+  }
+}
+@keyframes shimmer {
+  from {
+    opacity: 0.08;
+  }
+  to {
+    opacity: 0.55;
+  }
+}
+@media (max-width: 767px) {
+  .section {
+    min-height: 720px;
+    padding-top: clamp(130px, 19svh, 180px);
+  }
+  .copy h2 {
+    font-size: clamp(52px, 10vw, 76px);
+  }
+  .copy p {
+    max-width: 330px;
+    margin-top: 28px;
+  }
+  .landscape img {
+    object-position: 65% center;
+  }
+  .stars {
+    display: none;
+  }
+}

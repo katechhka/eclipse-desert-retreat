@@ -1,0 +1,174 @@
+.section {
+  background: var(--color-stone);
+  color: var(--color-ivory);
+  scroll-margin-top: var(--header-height);
+}
+.stage {
+  position: relative;
+  isolation: isolate;
+  background: var(--color-stone);
+  height: 100svh;
+  min-height: 760px;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 46% 29% 0 0;
+    z-index: -1;
+    pointer-events: none;
+    background: url("#{$base-path}/images/architecture-sand-v2.webp") center / 100% 100%
+      no-repeat;
+    opacity: 0.85;
+    mask-image:
+      linear-gradient(transparent, black 22%, black 72%, transparent),
+      linear-gradient(90deg, black 65%, transparent);
+    mask-composite: intersect;
+  }
+}
+.title {
+  position: absolute;
+  left: var(--page-gutter);
+  top: 61%;
+  width: 52%;
+  margin: 0;
+  font:
+    400 var(--text-architecture)/0.92 var(--font-display),
+    Georgia,
+    serif;
+  letter-spacing: -0.035em;
+  span,
+  em {
+    display: block;
+  }
+  em {
+    font-weight: 400;
+    margin-left: 12%;
+  }
+}
+.aerial,
+.facade {
+  position: absolute;
+  margin: 0;
+  overflow: hidden;
+  picture,
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  img {
+    object-fit: cover;
+  }
+}
+.aerial {
+  left: 4%;
+  top: 8%;
+  width: 52%;
+  height: 46%;
+  img {
+    object-position: 58% center;
+  }
+}
+.facade {
+  right: var(--page-gutter);
+  top: 22%;
+  width: 32%;
+  height: 70%;
+  img {
+    height: 106%;
+    object-position: center;
+  }
+}
+.copy {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12%;
+  max-width: 1440px;
+  margin: auto;
+  padding: 48px var(--page-gutter) 140px;
+  font-size: var(--text-body-editorial);
+  line-height: 1.85;
+  p {
+    max-width: 440px;
+    margin: 0;
+  }
+  p:last-child {
+    margin-top: 64px;
+  }
+}
+@media (max-width: 1023px) {
+  .stage {
+    height: auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    padding: 96px var(--page-gutter) 0;
+  }
+  .title {
+    position: static;
+    width: 100%;
+    font-size: clamp(64px, 10vw, 100px);
+    em {
+      margin-left: 10%;
+    }
+  }
+  .aerial,
+  .facade {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+  .aerial img {
+    height: auto;
+  }
+  .facade {
+    width: 64%;
+    align-self: flex-end;
+  }
+  .facade img {
+    height: auto;
+  }
+  .copy {
+    gap: 48px;
+    padding-top: 56px;
+    padding-bottom: 96px;
+  }
+  .copy p:last-child {
+    margin-top: 0;
+  }
+}
+@media (max-width: 767px) {
+  .stage {
+    gap: 40px;
+    padding-top: 80px;
+
+    &::before {
+      inset: 0;
+      background-image: url("#{$base-path}/images/architecture-sand-small-v2.webp");
+      background-size: auto 65%;
+      background-repeat: repeat-y;
+      opacity: 0.5;
+      mask-image: linear-gradient(
+        transparent,
+        black 18%,
+        black 75%,
+        transparent
+      );
+    }
+  }
+  .title {
+    font-size: clamp(60px, 14vw, 88px);
+  }
+  .facade {
+    width: 86%;
+    margin-top: 12px;
+  }
+  .copy {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding-top: 40px;
+    padding-bottom: 80px;
+  }
+}

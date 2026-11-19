@@ -1,0 +1,234 @@
+.section {
+  background: var(--color-sand);
+  color: var(--color-stone);
+  padding: clamp(90px, 10vw, 160px) var(--page-gutter);
+  scroll-margin-top: var(--header-height);
+}
+.inner {
+  max-width: 1440px;
+  margin: auto;
+}
+.intro {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: end;
+  gap: 8%;
+  margin-bottom: clamp(48px, 6vw, 90px);
+}
+.title {
+  margin: 0;
+  font:
+    400 var(--text-location)/0.88 var(--font-display),
+    Georgia,
+    serif;
+  letter-spacing: -0.035em;
+  > span {
+    display: block;
+    overflow: hidden;
+    // Leave room for Cormorant's italic descenders within the reveal mask.
+    padding: 0.16em 0.12em 0.3em;
+    margin: -0.16em -0.12em -0.18em;
+  }
+  > span > span {
+    display: block;
+  }
+  > span:last-child {
+    margin-left: 12%;
+    font-style: italic;
+  }
+}
+.body {
+  max-width: 440px;
+  margin: 0 0 8px;
+  font-size: var(--text-body-editorial);
+  line-height: 1.9;
+}
+.journey {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 4%;
+  align-items: center;
+}
+.photo {
+  position: relative;
+  aspect-ratio: 1.22;
+  overflow: hidden;
+  img {
+    position: absolute;
+    top: -7%;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 114%;
+    object-fit: cover;
+    object-position: 55% center;
+  }
+}
+.map {
+  margin: 0;
+  min-width: 0;
+  figcaption {
+    font:
+      400 clamp(28px, 2.5vw, 38px)/1.2 var(--font-display),
+      Georgia,
+      serif;
+  }
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    margin-top: 18px;
+  }
+}
+.country {
+  fill: color-mix(in srgb, var(--color-clay) 5%, transparent);
+  stroke: var(--color-rust);
+  stroke-opacity: 0.24;
+  stroke-width: 1;
+  stroke-dasharray: 4 7;
+  stroke-linejoin: round;
+}
+.countryName {
+  opacity: 0.22;
+  fill: var(--color-stone);
+  font:
+    italic 44px var(--font-display),
+    Georgia,
+    serif;
+}
+.routeBase {
+  fill: none;
+  stroke: var(--color-stone);
+  stroke-width: 1;
+  stroke-dasharray: 3 7;
+  opacity: 0.3;
+}
+.route {
+  fill: none;
+  stroke: var(--color-rust);
+  stroke-width: 2;
+}
+.points {
+  fill: var(--color-stone);
+  text {
+    font:
+      22px var(--font-body),
+      Arial,
+      sans-serif;
+  }
+}
+.marker {
+  fill: var(--color-rust);
+  stroke: var(--color-rust);
+  text {
+    stroke: none;
+    fill: var(--color-stone);
+    font:
+      20px var(--font-body),
+      Arial,
+      sans-serif;
+    letter-spacing: 4px;
+  }
+}
+.information {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 4%;
+  margin-top: 44px;
+}
+.stops {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  li {
+    border-top: 1px solid
+      color-mix(in srgb, var(--color-stone) 30%, transparent);
+    padding-top: 20px;
+  }
+  h3 {
+    font:
+      400 28px/1.2 var(--font-display),
+      Georgia,
+      serif;
+    margin: 0 0 12px;
+  }
+  p {
+    font-size: 14px;
+    line-height: 1.8;
+    margin: 0;
+  }
+}
+.explanation {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 400px;
+}
+@media (max-width: 1023px) {
+  .intro {
+    gap: 5%;
+  }
+  .body {
+    font-size: 15px;
+  }
+  .stops {
+    gap: 16px;
+  }
+  .stops h3 {
+    font-size: 24px;
+  }
+}
+@media (max-width: 767px) {
+  .intro,
+  .journey,
+  .information {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+  }
+  .title {
+    font-size: clamp(56px, 12.5vw, 90px);
+  }
+  .body {
+    max-width: 100%;
+    line-height: 1.85;
+  }
+  .photo {
+    aspect-ratio: 1.1;
+    margin-inline: calc(-1 * var(--page-gutter));
+    img {
+      top: 0;
+      height: 100%;
+    }
+  }
+  .map {
+    max-width: 480px;
+    width: 100%;
+    align-self: center;
+    margin-top: 12px;
+  }
+  .information {
+    margin-top: 20px;
+  }
+  .stops {
+    gap: 22px;
+    grid-template-columns: 1fr;
+  }
+  .stops li {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 12px;
+    padding-top: 18px;
+  }
+  .stops h3 {
+    margin: 0;
+  }
+  .explanation {
+    max-width: 100%;
+  }
+}
